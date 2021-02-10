@@ -159,7 +159,7 @@ Description: VCN for applications
 Once we click Add Ingress Rule, HTTP connections are allowed to our public subnet.
 ```
 
-4.Install an Ubuntu VM
+4. Install an Ubuntu VM
 
 From the Oracle Cloud Infrastructure main menu, select Compute, then Instances.
 From the list of instances screen, click Create Instance.
@@ -195,7 +195,7 @@ Provisioning the system may take several minutes.
 
 we have successfully created an Ubuntu Linux VM to build and test our applications.
 
-5.Run a Python Application in a Flask Framework
+5. Run a Python Application in a Flask Framework
 
 Next, set up a Flask framework on your Ubuntu Linux VM and then create and run a Python application.
 
@@ -332,7 +332,7 @@ We have successfully created a local Python application in a Flask framework, on
 
 For more info on Flask: https://flask.palletsprojects.com/
 
-6.Build and Push your Python Flask Docker Image
+6. Build and Push your Python Flask Docker Image
 
 Next, create a Docker image on your Ubuntu Linux VM and then push it to Oracle Cloud Infrastructure Registry.
 
@@ -446,6 +446,7 @@ Full Path: <region-key>.ocir.io/<tenancy-name>/<image-folder>/python-hello-app
 ![image](https://user-images.githubusercontent.com/42166489/107561062-1735c180-6c04-11eb-9bc6-4d42fd5ccdaa.png)
 
 Congratulations! You created a Flask Python Docker image. Now you can create a Kubernetes cluster and deploy this image to the cluster.
+
 7. Create your Kubernetes Cluster
 
 Set up the Kubernetes cluster we will deploy your application to. We will use a wizard to set up your first cluster.
@@ -478,7 +479,7 @@ Click Close.
 Get a cup of coffee. It may take a few minutes for the cluster to be created.
 We have successfully created a Kubernetes cluster.
 
-8.Manage your Kubernetes Cluster with Cloud Shell
+8. Manage your Kubernetes Cluster with Cloud Shell
 
 In this section, we include the Kubernetes cluster information in a .kube/config file, so we can access the cluster and manage deployments. To do that, complete the following steps:
 
@@ -519,7 +520,7 @@ kubectl get service
 
 ![image](https://user-images.githubusercontent.com/42166489/107561143-316f9f80-6c04-11eb-8a02-a17ee7c67787.png)
 
-8. Deploy the Docker Image to the Cluster
+9. Deploy the Docker Image to the Cluster
 
 Now, create a manifest file to include information about the following resources and then create the resources with Kubernetes:
 Deployment: Pull and deploy the image from registry.
