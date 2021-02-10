@@ -494,6 +494,89 @@ Copy the following information in our app.yaml.
 
 Here are some of the parameters that we will set for the deployment section:
 
+![image](https://user-images.githubusercontent.com/42166489/107561343-6da30000-6c04-11eb-8de6-91d31ff7b795.png)
+
+![image](https://user-images.githubusercontent.com/42166489/107561371-7562a480-6c04-11eb-9436-ae57520733d2.png)
+
+Yaml File:
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: python-hello-app
+spec:
+  selector:
+    matchLabels:
+      app: python-hello-app
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: python-hello-app
+        version: v1
+    spec:
+      containers:
+      - name: python-hello-app
+        image: bom.ocir.io/bmdrgwy1wsjh/saikat/python-hello-app:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+          protocol: TCP
+      imagePullSecrets:
+        - name: ocirsecret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: python-hello-app-lb
+  labels:
+    app: python-hello-app
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 5000
+  selector:
+    app: python-hello-app
+
+**Screenshot**:
+
+![image](https://user-images.githubusercontent.com/42166489/107561441-88757480-6c04-11eb-807a-da9848eb89e8.png)
+
+Deploy our application with the following command:
+kubectl create -f app.yaml
+
+Test our Application
+Our load balancer may take a few seconds to load after issuing the command.
+
+Check for our load balancer to deploy.
+kubectl get service
+
+We can see that “python-helloapp-lb” is deployed.
+
+Test in Browser:
+Using the IP address for the Load Balancer connect to the app in a browser, http://x.x.x.x:5000
+
+Eg:  http://168.138.113.234:5000/
+
+![image](https://user-images.githubusercontent.com/42166489/107561517-a216bc00-6c04-11eb-99fa-4198aea2e635.png)
+
+Clean up the Application:
+After you are done, clean up and remove the services you created.
+
+Delete your application deployment and load balancer service:
+
+kubectl delete -f app.yaml
+
+The following messages are returned:
+service "node-hello-app-lb" deleted
+deployment.extensions "node-hello-app" deleted
+
+To check that the service is removed:
+kubectl get service
+
+Congratulations! We installed and deployed a Node Express application to a Kubernetes cluster on Oracle Cloud Infrastructure.
+
+
+
 
 
 
