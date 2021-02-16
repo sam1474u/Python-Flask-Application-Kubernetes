@@ -1,4 +1,4 @@
-# Python-Flask-Application-Kubernetes
+# Deploy a Python Flask Application to a Kubernetes Cluster
 In this tutorial, you use an Oracle Cloud Infrastructure account to set up a Kubernetes cluster. Then, you create a Python application with a Flask framework. Finally, we deploy our application to your cluster by using Cloud Shell.
 
 Key tasks include how to:
@@ -16,16 +16,17 @@ Key tasks include how to:
 What we need to start:
 To successfully perform this tutorial, we must have the following:
 
-1.A paid Oracle Cloud Infrastructure account. 
+A paid Oracle Cloud Infrastructure account. 
 https://docs.oracle.com/iaas/Content/GSG/Tasks/signingup.htm
-2. SSH support:
+
+SSH support:
 A MacOS or Linux computer with ssh support installed.
 A Windows machine with Git Bash installed. 
 https://gitforwindows.org/
 
 In this tutorial we are going to use a Mac machine.
 
-1. Gather Required Information
+### Gather Required Information
 Prepare the information we need from the Oracle Cloud Infrastructure Console.
 
 Check our service limits:
@@ -74,7 +75,7 @@ Username: <user-name> from our user avatar.
 User OCID: <user-ocid> from our user avatar, go to User Settings and copy OCID.
 ```
 
-2. Create SSH Encryption Keys
+### Create SSH Encryption Keys
 
 Create ssh encryption keys to connect to our compute instance.
 
@@ -106,7 +107,7 @@ Create a API Key by clicking on the API Keys and download and save the keys to a
 
 ![image](https://user-images.githubusercontent.com/42166489/107560540-7941f700-6c03-11eb-8cd8-29f5f7083fef.png)
 
-3. Create a Virtual Cloud Network (VCN)
+### Create a Virtual Cloud Network (VCN)
 
 1. From the main landing page, select Set up a network with a wizard.
 
@@ -159,7 +160,7 @@ Description: VCN for applications
 Once we click Add Ingress Rule, HTTP connections are allowed to our public subnet.
 ```
 
-4. Install an Ubuntu VM
+13. Install an Ubuntu VM
 
 From the Oracle Cloud Infrastructure main menu, select Compute, then Instances.
 From the list of instances screen, click Create Instance.
@@ -195,7 +196,7 @@ Provisioning the system may take several minutes.
 
 we have successfully created an Ubuntu Linux VM to build and test our applications.
 
-5. Run a Python Application in a Flask Framework
+### Run a Python Application in a Flask Framework
 
 Next, set up a Flask framework on your Ubuntu Linux VM and then create and run a Python application.
 
@@ -332,7 +333,7 @@ We have successfully created a local Python application in a Flask framework, on
 
 For more info on Flask: https://flask.palletsprojects.com/
 
-6. Build and Push your Python Flask Docker Image
+### Build and Push your Python Flask Docker Image
 
 Next, create a Docker image on your Ubuntu Linux VM and then push it to Oracle Cloud Infrastructure Registry.
 
@@ -447,7 +448,7 @@ Full Path: <region-key>.ocir.io/<tenancy-name>/<image-folder>/python-hello-app
 
 Congratulations! You created a Flask Python Docker image. Now you can create a Kubernetes cluster and deploy this image to the cluster.
 
-7. Create your Kubernetes Cluster
+### Create your Kubernetes Cluster
 
 Set up the Kubernetes cluster we will deploy your application to. We will use a wizard to set up your first cluster.
 
@@ -479,7 +480,7 @@ Click Close.
 Get a cup of coffee. It may take a few minutes for the cluster to be created.
 We have successfully created a Kubernetes cluster.
 
-8. Manage your Kubernetes Cluster with Cloud Shell
+### Manage your Kubernetes Cluster with Cloud Shell
 
 In this section, we include the Kubernetes cluster information in a .kube/config file, so we can access the cluster and manage deployments. To do that, complete the following steps:
 
@@ -520,7 +521,7 @@ kubectl get service
 
 ![image](https://user-images.githubusercontent.com/42166489/107561143-316f9f80-6c04-11eb-8a02-a17ee7c67787.png)
 
-9. Deploy the Docker Image to the Cluster
+### Deploy the Docker Image to the Cluster
 
 Now, create a manifest file to include information about the following resources and then create the resources with Kubernetes:
 Deployment: Pull and deploy the image from registry.
